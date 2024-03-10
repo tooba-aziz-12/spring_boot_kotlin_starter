@@ -5,20 +5,16 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
-import org.mockito.kotlin.times
-import org.mockito.kotlin.whenever
 
 @ExtendWith(MockitoExtension::class)
-class SampleServiceTest {
+class UserServiceTest {
 
-     private lateinit var sampleService: SampleService
+     private lateinit var userService: UserService
 
     @BeforeEach
     fun setup() {
-        this.sampleService = SampleService(
+        this.userService = UserService(
         )
     }
 
@@ -27,7 +23,7 @@ class SampleServiceTest {
 
         @Test
         fun greetUser(){
-            val greeting  = sampleService.greetUser("test-user")
+            val greeting  = userService.createUser("test-user")
             Assertions.assertEquals(greeting, "Hi test-user, how are you?")
         }
     }

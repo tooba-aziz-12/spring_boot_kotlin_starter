@@ -233,12 +233,6 @@
 						<configuration>
 							<backend>html</backend>
 							<doctype>book</doctype>
-							<!--<attributes>
-								<snippets>target/generated-snippets</snippets>
-								<backend-root-directory>${session.executionRootDirectory}</backend-root-directory>
-							</attributes>
-							<sourceDirectory>${session.executionRootDirectory}/analysis/asciidoctor</sourceDirectory>
-							<outputFile>${session.executionRootDirectory}/docs/api-docs.html</outputFile>-->
 						</configuration>
 					</execution>
 				</executions>

@@ -35,7 +35,7 @@ internal class LiquibaseConfigurationTest {
     }
 
     @Nested
-    internal inner class SampleEntityLiquibase {
+    internal inner class UserLiquibase {
         @Test
         fun liquibase() {
             val dataSourceProperties = org.springframework.boot.autoconfigure.jdbc.DataSourceProperties()

@@ -47,7 +47,7 @@ class PersistenceConfigurationTest {
     }
 
     @Nested
-    internal inner class SampleEntityEntityManagerFactory {
+    internal inner class UserManagerFactory {
         @Test
         fun sampleEntityManagerFactoryTest() {
             val factory = EntityManagerFactoryBuilder(

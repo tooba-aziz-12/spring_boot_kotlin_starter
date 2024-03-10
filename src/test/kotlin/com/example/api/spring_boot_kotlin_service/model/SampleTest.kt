@@ -8,20 +8,20 @@ class SampleTest {
 
     @Test
     fun shouldCreateSampleEntityObject() {
-        val sampleEntity = SampleEntity()
-        Assertions.assertNotNull(sampleEntity.id)
-        Assertions.assertFalse(StringUtils.isBlank(sampleEntity.id))
-        Assertions.assertNotNull(sampleEntity.createdAt)
-        Assertions.assertNotNull(sampleEntity.updatedAt)
-        Assertions.assertEquals("", sampleEntity.createdBy)
-        Assertions.assertEquals("", sampleEntity.updatedBy)
+        val user = User()
+        Assertions.assertNotNull(user.id)
+        Assertions.assertFalse(StringUtils.isBlank(user.id))
+        Assertions.assertNotNull(user.createdAt)
+        Assertions.assertNotNull(user.updatedAt)
+        Assertions.assertEquals("", user.createdBy)
+        Assertions.assertEquals("", user.updatedBy)
     }
 
     @Test
     fun shouldSetId() {
-        val sampleEntity = SampleEntity()
-        sampleEntity.id = "sample-id-1"
+        val user = User()
+        user.id = "sample-id-1"
 
-        Assertions.assertEquals("sample-id-1", sampleEntity.id)
+        Assertions.assertEquals("sample-id-1", user.id)
     }
 }

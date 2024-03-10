@@ -1,6 +1,6 @@
 package com.example.api.spring_boot_kotlin_service.controller
 
-import com.example.api.spring_boot_kotlin_service.service.SampleService
+import com.example.api.spring_boot_kotlin_service.service.UserService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
@@ -9,7 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
-import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 import org.springframework.http.HttpStatus
@@ -32,13 +31,13 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
     RestDocumentationExtension::class
     )
 )
-class SampleControllerTest{
+class UserControllerTest{
 
 
     private lateinit var mockMvc: MockMvc
 
     @Mock
-    private lateinit var sampleService: SampleService
+    private lateinit var userService: UserService
 
     companion object {
         const val BASE_URI = "/v1/sample"
@@ -49,8 +48,8 @@ class SampleControllerTest{
         restDocumentation: RestDocumentationContextProvider
     ) {
         mockMvc = MockMvcBuilders.standaloneSetup(
-            SampleController(
-                sampleService
+            UserController(
+                userService
             )
         )
             .alwaysDo<StandaloneMockMvcBuilder>(document("{class-name}/{method-name}",
@@ -67,7 +66,7 @@ class SampleControllerTest{
 
         @Test
         fun withGoodPayload() {
-            whenever(sampleService.greetUser("test-user")).thenReturn("greeting string")
+            whenever(userService.createUser("test-user")).thenReturn("greeting string")
 
             val andReturn: MvcResult = mockMvc.perform(
                 MockMvcRequestBuilders.get("$BASE_URI/greeting")
@@ -78,7 +77,7 @@ class SampleControllerTest{
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andReturn()
 
-            Mockito.verify(sampleService, times(1)).greetUser("test-user")
+            Mockito.verify(userService, times(1)).createUser("test-user")
             Assertions.assertEquals(andReturn.response.status, HttpStatus.OK.value())
         }
         @Test
@@ -92,7 +91,7 @@ class SampleControllerTest{
                 .andExpect(MockMvcResultMatchers.status().isBadRequest)
                 .andReturn()
 
-            Mockito.verify(sampleService, times(0)).greetUser("test-user")
+            Mockito.verify(userService, times(0)).createUser("test-user")
             Assertions.assertEquals(andReturn.response.status, HttpStatus.BAD_REQUEST.value())
         }
     }
