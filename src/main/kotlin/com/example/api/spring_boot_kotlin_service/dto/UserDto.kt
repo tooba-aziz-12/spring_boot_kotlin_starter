@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank
 
 data class UserDto(
 
-    val userId: String,
+    var userId: String = "",
 
     @field:NotBlank(message = "First Name can not be empty")
     val firstName: String,
@@ -21,7 +21,6 @@ data class UserDto(
     @field:NotBlank(message = "Phone can not be empty")
     val phone: String,
 
-    @field:NotBlank(message = "Reset Password token can not be empty")
     val userRoles: List<UserRoleDto>
 ){
     fun toUser(userRoles : List<Role>): User{

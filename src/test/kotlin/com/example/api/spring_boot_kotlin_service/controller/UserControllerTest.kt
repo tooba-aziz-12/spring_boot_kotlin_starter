@@ -1,6 +1,9 @@
 package com.example.api.spring_boot_kotlin_service.controller
 
+import com.example.api.spring_boot_kotlin_service.fixture.UserFixture.Companion.createUserBadDto
+import com.example.api.spring_boot_kotlin_service.fixture.UserFixture.Companion.userDto
 import com.example.api.spring_boot_kotlin_service.service.UserService
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
@@ -33,6 +36,7 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
 )
 class UserControllerTest{
 
+    private val objectMapper  = ObjectMapper()
 
     private lateinit var mockMvc: MockMvc
 
@@ -40,7 +44,7 @@ class UserControllerTest{
     private lateinit var userService: UserService
 
     companion object {
-        const val BASE_URI = "/v1/sample"
+        const val BASE_URI = "/user"
     }
 
     @BeforeEach
@@ -61,37 +65,40 @@ class UserControllerTest{
 
 
     @Nested
-    inner class GreetUser {
-
+    inner class CreateUser {
 
         @Test
         fun withGoodPayload() {
-            whenever(userService.createUser("test-user")).thenReturn("greeting string")
+            val expectedResponse  = userDto.copy()
+            expectedResponse.userId = "test-user-id"
+
+            whenever(userService.createUser(userDto)).thenReturn(expectedResponse)
 
             val andReturn: MvcResult = mockMvc.perform(
-                MockMvcRequestBuilders.get("$BASE_URI/greeting")
-                    .param("name", "test-user")
+                MockMvcRequestBuilders.post("$BASE_URI")
+                    .content(objectMapper.writeValueAsString(userDto))
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
             )
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andReturn()
 
-            Mockito.verify(userService, times(1)).createUser("test-user")
+            Mockito.verify(userService, times(1)).createUser(userDto)
             Assertions.assertEquals(andReturn.response.status, HttpStatus.OK.value())
         }
         @Test
         fun forBadRequest() {
 
             val andReturn: MvcResult = mockMvc.perform(
-                MockMvcRequestBuilders.get("$BASE_URI/greeting")
+                MockMvcRequestBuilders.post("$BASE_URI")
+                    .content(objectMapper.writeValueAsString(createUserBadDto))
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
             )
                 .andExpect(MockMvcResultMatchers.status().isBadRequest)
                 .andReturn()
 
-            Mockito.verify(userService, times(0)).createUser("test-user")
+            Mockito.verify(userService, times(0)).createUser(createUserBadDto)
             Assertions.assertEquals(andReturn.response.status, HttpStatus.BAD_REQUEST.value())
         }
     }
