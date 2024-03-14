@@ -8,7 +8,7 @@
 		<version>3.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.digitalhire.api</groupId>
+	<groupId>com.example.api</groupId>
 	<artifactId>spring-boot-kotlin-starter-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring_boot_kotlin_starter</name>
