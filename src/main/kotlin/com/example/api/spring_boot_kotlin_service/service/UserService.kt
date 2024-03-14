@@ -1,6 +1,7 @@
 package com.example.api.spring_boot_kotlin_service.service
 
 import com.example.api.spring_boot_kotlin_service.dto.UserDto
+import com.example.api.spring_boot_kotlin_service.dto.UserSearchReqDto
 import com.example.api.spring_boot_kotlin_service.exception.UserCreationFailedException
 import com.example.api.spring_boot_kotlin_service.exception.UserNotFoundException
 import com.example.api.spring_boot_kotlin_service.repository.RoleRepository

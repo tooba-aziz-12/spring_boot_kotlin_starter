@@ -29,13 +29,11 @@ class PreAuthorizationFilter : OncePerRequestFilter() {
         filterChain: FilterChain
     ) {
 
-        val isUserValidated: String = StringUtils.defaultString(request.getHeader(com.example.api.spring_boot_kotlin_service.constant.RequestHeaders.IS_VALIDATED))
-        if (parseBoolean(isUserValidated)) {
-            val permissions = request.getHeader(com.example.api.spring_boot_kotlin_service.constant.RequestHeaders.USER_PERMISSIONS).split(",".toRegex())
-                .toTypedArray()
-            injectSecurityPrincipal(request.getHeader(com.example.api.spring_boot_kotlin_service.constant.RequestHeaders.USER_ID), permissions)
 
-        }
+        val permissions = request.getHeader(com.example.api.spring_boot_kotlin_service.constant.RequestHeaders.USER_ROLES).split(",".toRegex())
+            .toTypedArray()
+        injectSecurityPrincipal(request.getHeader(com.example.api.spring_boot_kotlin_service.constant.RequestHeaders.USER_ID), permissions)
+
         filterChain.doFilter(request, response)
     }
     private fun injectSecurityPrincipal(userName: String, permissions: Array<String>) {
