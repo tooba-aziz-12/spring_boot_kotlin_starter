@@ -21,11 +21,11 @@ class UserController (
         return userService.createUser(userDto)
     }
 
-   /* @GetMapping("/greeting")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    fun greetingsApi(
-        @RequestParam name: String
-    ): String {
-        return userService.greetUser(name)
-    }*/
+    fun getUser(
+        @PathVariable("id") id: String
+    ): UserDto {
+        return userService.getUserById(id)
+    }
 }

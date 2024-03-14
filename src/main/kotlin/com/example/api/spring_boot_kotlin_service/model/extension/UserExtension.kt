@@ -5,7 +5,7 @@ import com.example.api.spring_boot_kotlin_service.model.User
 
 fun User.toDto(): UserDto {
 
-    return UserDto(
+    val dto = UserDto(
         userId = id!!,
         firstName = firstName,
         lastName = lastName,
@@ -18,4 +18,5 @@ fun User.toDto(): UserDto {
             )
         }
     )
+    return dto
 }

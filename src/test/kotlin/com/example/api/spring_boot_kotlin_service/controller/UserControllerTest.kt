@@ -102,4 +102,43 @@ class UserControllerTest{
             Assertions.assertEquals(andReturn.response.status, HttpStatus.BAD_REQUEST.value())
         }
     }
+
+    @Nested
+    inner class GetUser {
+        private val requestUserId = "test-user-id"
+        private val expectedResponse  = userDto.copy()
+        @Test
+        fun withGoodPayload() {
+
+            expectedResponse.userId = requestUserId
+
+            whenever(userService.getUserById(requestUserId)).thenReturn(expectedResponse)
+
+            val andReturn: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.get("$BASE_URI/$requestUserId")
+                    .queryParam("id",requestUserId)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andReturn()
+
+            Mockito.verify(userService, times(1)).getUserById(requestUserId)
+            Assertions.assertEquals(andReturn.response.status, HttpStatus.OK.value())
+        }
+        @Test
+        fun withWrongURI() {
+
+            val andReturn: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.get("$BASE_URI")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isMethodNotAllowed)
+                .andReturn()
+
+            Mockito.verify(userService, times(0)).getUserById(requestUserId)
+            Assertions.assertEquals(andReturn.response.status, HttpStatus.METHOD_NOT_ALLOWED.value())
+        }
+    }
 }
