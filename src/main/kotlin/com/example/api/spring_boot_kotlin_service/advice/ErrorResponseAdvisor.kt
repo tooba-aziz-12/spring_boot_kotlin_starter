@@ -41,7 +41,7 @@ class ErrorResponseAdvisor {
     @ExceptionHandler(
         UserNotFoundException::class
     )
-    fun handleFailedToSaveApplicantResume(ex: UserNotFoundException): ResponseEntity<ErrorMessageDto> {
+    fun handleUserNotFoundException(ex: UserNotFoundException): ResponseEntity<ErrorMessageDto> {
         val errorMessage = ErrorMessageDto(
             HttpStatus.BAD_REQUEST.name,
             mutableListOf(ex.message),
@@ -53,7 +53,7 @@ class ErrorResponseAdvisor {
     @ExceptionHandler(
         UserCreationFailedException::class
     )
-    fun handleFailedToSaveApplicantResume(ex: UserCreationFailedException): ResponseEntity<ErrorMessageDto> {
+    fun handleUserCreationFailedException(ex: UserCreationFailedException): ResponseEntity<ErrorMessageDto> {
         val errorMessage = ErrorMessageDto(
             HttpStatus.INTERNAL_SERVER_ERROR.name,
             mutableListOf(ex.message),
