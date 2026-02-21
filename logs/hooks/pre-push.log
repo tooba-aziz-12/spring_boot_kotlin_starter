@@ -1,0 +1,198 @@
+mvn clean verify -Pcoverage
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------< com.example.api:spring-boot-kotlin-starter-service >---------
+[INFO] Building spring_boot_kotlin_starter 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] Parameter 'propertiesEncoding' is unknown for plugin 'maven-resources-plugin:2.7:resources (default-resources)'
+[WARNING] Parameter 'propertiesEncoding' is unknown for plugin 'maven-resources-plugin:2.7:testResources (default-testResources)'
+[WARNING] Parameter 'propertiesEncoding' is unknown for plugin 'maven-resources-plugin:2.7:copy-resources (copy-resources)'
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ spring-boot-kotlin-starter-service ---
+[INFO] Deleting /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target
+[INFO] 
+[INFO] --- githook:1.0.5:install (default) @ spring-boot-kotlin-starter-service ---
+[INFO] Installing pre-commit hook into /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/.git/hooks
+[INFO] Installing pre-push hook into /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/.git/hooks
+[INFO] 
+[INFO] --- jacoco:0.8.8:prepare-agent (default) @ spring-boot-kotlin-starter-service ---
+[INFO] argLine set to -javaagent:/Users/toobaaziz/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target/jacoco.exec,excludes=**/*SpringBootKotlinApplication*.*
+[INFO] 
+[INFO] --- resources:2.7:resources (default-resources) @ spring-boot-kotlin-starter-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ spring-boot-kotlin-starter-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- kotlin:1.9.22:compile (compile) @ spring-boot-kotlin-starter-service ---
+[INFO] Applied plugin: 'spring'
+[INFO] Applied plugin: 'jpa'
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/advice/ErrorResponseAdvisor.kt: (30, 33) Unchecked cast: (Mutable)List<String?>! to MutableList<String>
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (28, 21) 'cors(): CorsConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (29, 22) 'and(): H!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (30, 26) 'csrf(): CsrfConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (31, 26) 'authorizeHttpRequests(): AuthorizeHttpRequestsConfigurer<HttpSecurity!>.AuthorizationManagerRequestMatcherRegistry!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (32, 22) 'and(): H!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (33, 26) 'sessionManagement(): SessionManagementConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (35, 22) 'and(): H!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (36, 26) 'exceptionHandling(): ExceptionHandlingConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (37, 22) 'and(): H!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/service/VideoService.kt: (42, 41) Parameter 'videoUrl' is never used
+[INFO] 
+[INFO] --- resources:2.7:testResources (default-testResources) @ spring-boot-kotlin-starter-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ spring-boot-kotlin-starter-service ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] 
+[INFO] --- kotlin:1.9.22:test-compile (test-compile) @ spring-boot-kotlin-starter-service ---
+[INFO] Applied plugin: 'spring'
+[INFO] Applied plugin: 'jpa'
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/test/kotlin/com/example/api/spring_boot_kotlin_service/controller/UserControllerTest.kt: (75, 17) Variable 'andReturn' is never used
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/test/kotlin/com/example/api/spring_boot_kotlin_service/controller/UserControllerTest.kt: (89, 17) Variable 'andReturn' is never used
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/test/kotlin/com/example/api/spring_boot_kotlin_service/controller/UserControllerTest.kt: (113, 17) Variable 'andReturn' is never used
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/test/kotlin/com/example/api/spring_boot_kotlin_service/controller/UserControllerTest.kt: (127, 17) Variable 'andReturn' is never used
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ spring-boot-kotlin-starter-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.api.spring_boot_kotlin_service.SpringBootKotlinApplicationTests
+15:15:32.312 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.api.spring_boot_kotlin_service.SpringBootKotlinApplicationTests]: SpringBootKotlinApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:15:32.398 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.api.spring_boot_kotlin_service.SpringBootKotlinApplication for test class com.example.api.spring_boot_kotlin_service.SpringBootKotlinApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-02-21T15:15:32.736+01:00  INFO 52053 --- [           main] c.e.a.s.SpringBootKotlinApplicationTests : Starting SpringBootKotlinApplicationTests using Java 21.0.7 with PID 52053 (started by toobaaziz in /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter)
+2026-02-21T15:15:32.738+01:00  INFO 52053 --- [           main] c.e.a.s.SpringBootKotlinApplicationTests : The following 1 profile is active: "test"
+2026-02-21T15:15:33.128+01:00  INFO 52053 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-21T15:15:33.246+01:00  INFO 52053 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 2 JPA repository interfaces.
+2026-02-21T15:15:33.875+01:00  INFO 52053 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-02-21T15:15:34.209+01:00  INFO 52053 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db user=SA
+2026-02-21T15:15:34.212+01:00  INFO 52053 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-02-21T15:15:34.301+01:00  INFO 52053 --- [           main] liquibase.database                       : Set default schema name to PUBLIC
+2026-02-21T15:15:34.454+01:00  INFO 52053 --- [           main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-02-21T15:15:34.610+01:00  INFO 52053 --- [           main] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2026-02-21T15:15:34.614+01:00  INFO 52053 --- [           main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2026-02-21T15:15:34.638+01:00  INFO 52053 --- [           main] liquibase.servicelocator                 : Cannot load service: liquibase.hub.HubService: Provider liquibase.hub.core.StandardHubService could not be instantiated
+Running Changeset: migrations/2024.03.08-create-schema-sample.mysql.sql::1674649039::Tooba aziz
+2026-02-21T15:15:34.648+01:00  INFO 52053 --- [           main] liquibase.changelog                      : Custom SQL executed
+2026-02-21T15:15:34.648+01:00  INFO 52053 --- [           main] liquibase.changelog                      : ChangeSet migrations/2024.03.08-create-schema-sample.mysql.sql::1674649039::Tooba aziz ran successfully in 8ms
+2026-02-21T15:15:34.662+01:00  INFO 52053 --- [           main] liquibase.lockservice                    : Successfully released change log lock
+2026-02-21T15:15:34.727+01:00  INFO 52053 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: sample]
+2026-02-21T15:15:34.790+01:00  INFO 52053 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21T15:15:34.815+01:00  INFO 52053 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-02-21T15:15:34.994+01:00  INFO 52053 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-21T15:15:35.013+01:00  INFO 52053 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-02-21T15:15:35.014+01:00  INFO 52053 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:db user=SA
+2026-02-21T15:15:35.014+01:00  INFO 52053 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-02-21T15:15:35.710+01:00  INFO 52053 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21T15:15:35.711+01:00  INFO 52053 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'sample'
+2026-02-21T15:15:36.137+01:00  WARN 52053 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21T15:15:36.150+01:00  WARN 52053 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c43cd7ff-a567-4456-9e87-cd555b830e2f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-02-21T15:15:36.338+01:00  INFO 52053 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7a084d61, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c7580f5, org.springframework.security.web.context.SecurityContextHolderFilter@5d002030, org.springframework.security.web.header.HeaderWriterFilter@15dabc33, org.springframework.web.filter.CorsFilter@63c25f3a, org.springframework.security.web.authentication.logout.LogoutFilter@1e597039, com.example.api.spring_boot_kotlin_service.security.filter.PreAuthorizationFilter@3ba5dd55, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@164148d5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1fd1829c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@380cbd43, org.springframework.security.web.session.SessionManagementFilter@5d79037, org.springframework.security.web.access.ExceptionTranslationFilter@302424ac, org.springframework.security.web.access.intercept.AuthorizationFilter@72f689bc]
+2026-02-21T15:15:36.496+01:00  INFO 52053 --- [           main] c.e.a.s.SpringBootKotlinApplicationTests : Started SpringBootKotlinApplicationTests in 3.981 seconds (process running for 4.77)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.670 s -- in com.example.api.spring_boot_kotlin_service.SpringBootKotlinApplicationTests
+[INFO] Running com.example.api.spring_boot_kotlin_service.config.AuditorAwareConfigurationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.378 s -- in com.example.api.spring_boot_kotlin_service.config.AuditorAwareConfigurationTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.security.filter.PreAuthorizationFilterTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.example.api.spring_boot_kotlin_service.security.filter.PreAuthorizationFilterTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.advice.ErrorResponseAdvisorTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 s -- in com.example.api.spring_boot_kotlin_service.advice.ErrorResponseAdvisorTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.controller.UserControllerTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.controller.UserControllerTest$CreateUser
+2026-02-21T15:15:37.587+01:00  INFO 52053 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-02-21T15:15:37.587+01:00  INFO 52053 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-02-21T15:15:37.587+01:00  INFO 52053 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-02-21T15:15:37.956+01:00  INFO 52053 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-02-21T15:15:37.956+01:00  INFO 52053 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-02-21T15:15:37.956+01:00  INFO 52053 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-02-21T15:15:37.972+01:00  WARN 52053 --- [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.example.api.spring_boot_kotlin_service.dto.UserDto com.example.api.spring_boot_kotlin_service.controller.UserController.createUser(com.example.api.spring_boot_kotlin_service.dto.UserDto): [Field error in object 'userDto' on field 'firstName': rejected value []; codes [NotBlank.userDto.firstName,NotBlank.firstName,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.firstName,firstName]; arguments []; default message [firstName]]; default message [First Name can not be empty]] ]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.566 s -- in com.example.api.spring_boot_kotlin_service.controller.UserControllerTest$CreateUser
+[INFO] Running com.example.api.spring_boot_kotlin_service.controller.UserControllerTest$GetUser
+2026-02-21T15:15:37.986+01:00  INFO 52053 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-02-21T15:15:37.986+01:00  INFO 52053 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-02-21T15:15:37.986+01:00  INFO 52053 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-02-21T15:15:38.007+01:00  INFO 52053 --- [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-02-21T15:15:38.007+01:00  INFO 52053 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-02-21T15:15:38.007+01:00  INFO 52053 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-02-21T15:15:38.011+01:00  WARN 52053 --- [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.038 s -- in com.example.api.spring_boot_kotlin_service.controller.UserControllerTest$GetUser
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.608 s -- in com.example.api.spring_boot_kotlin_service.controller.UserControllerTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.model.SampleTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in com.example.api.spring_boot_kotlin_service.model.SampleTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.model.BaseEntityTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.example.api.spring_boot_kotlin_service.model.BaseEntityTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.service.UserServiceTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.service.UserServiceTest$CreateUserTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.158 s -- in com.example.api.spring_boot_kotlin_service.service.UserServiceTest$CreateUserTest
+[INFO] Running com.example.api.spring_boot_kotlin_service.service.UserServiceTest$GetUserByIdTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.example.api.spring_boot_kotlin_service.service.UserServiceTest$GetUserByIdTest
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 s -- in com.example.api.spring_boot_kotlin_service.service.UserServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.8:report (report) @ spring-boot-kotlin-starter-service ---
+[INFO] Loading execution data file /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target/jacoco.exec
+[INFO] Analyzed bundle 'spring_boot_kotlin_starter' with 41 classes
+[INFO] 
+[INFO] --- asciidoctor:2.2.1:process-asciidoc (generate-docs) @ spring-boot-kotlin-starter-service ---
+[INFO] sourceDirectory /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/docs/asciidoc does not exist
+[INFO] sourceDirectory /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/asciidoc does not exist
+[INFO] sourceDirectory /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/asciidoc does not exist
+[INFO] No sourceDirectory found. Skipping processing
+[INFO] 
+[INFO] --- resources:2.7:copy-resources (copy-resources) @ spring-boot-kotlin-starter-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target/generated-docs
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ spring-boot-kotlin-starter-service ---
+[INFO] Building jar: /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target/spring-boot-kotlin-starter-service-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.2.5:repackage (repackage) @ spring-boot-kotlin-starter-service ---
+[INFO] Replacing main artifact /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target/spring-boot-kotlin-starter-service-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target/spring-boot-kotlin-starter-service-0.0.1-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.8:check (jacoco-check) @ spring-boot-kotlin-starter-service ---
+[INFO] Loading execution data file /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target/jacoco.exec
+[INFO] Analyzed bundle 'spring-boot-kotlin-starter-service' with 41 classes
+[WARNING] Rule violated for class com.example.api.spring_boot_kotlin_service.controller.VideoController: lines covered ratio is 0.7, but expected minimum is 1.0
+[WARNING] Rule violated for class com.example.api.spring_boot_kotlin_service.service.VideoService.processVideo.2.1.previewDeferred.1: lines covered ratio is 0.0, but expected minimum is 1.0
+[WARNING] Rule violated for class com.example.api.spring_boot_kotlin_service.service.VideoService.processVideo.2.1: lines covered ratio is 0.0, but expected minimum is 1.0
+[WARNING] Rule violated for class com.example.api.spring_boot_kotlin_service.service.VideoService.processVideo.2: lines covered ratio is 0.0, but expected minimum is 1.0
+[WARNING] Rule violated for class com.example.api.spring_boot_kotlin_service.service.VideoService: lines covered ratio is 0.2, but expected minimum is 1.0
+[WARNING] Rule violated for class com.example.api.spring_boot_kotlin_service.service.VideoService.processVideo.2.1.gifDeferred.1: lines covered ratio is 0.0, but expected minimum is 1.0
+[WARNING] Rule violated for class com.example.api.spring_boot_kotlin_service.service.VideoService.processVideo.2.1.metadataDeferred.1: lines covered ratio is 0.0, but expected minimum is 1.0
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.911 s
+[INFO] Finished at: 2026-02-21T15:15:39+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.jacoco:jacoco-maven-plugin:0.8.8:check (jacoco-check) on project spring-boot-kotlin-starter-service: Coverage checks have not been met. See log for details. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
