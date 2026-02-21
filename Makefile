@@ -7,5 +7,5 @@ clean:
 compile:
 	mvn compile
 
-local-verify: clean
-	mvn verify
+local-verify:
+	mvn clean verify -Pcoverage

@@ -1,0 +1,44 @@
+mvn compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------< com.example.api:spring-boot-kotlin-starter-service >---------
+[INFO] Building spring_boot_kotlin_starter 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] Parameter 'propertiesEncoding' is unknown for plugin 'maven-resources-plugin:2.7:resources (default-resources)'
+[INFO] 
+[INFO] --- githook:1.0.5:install (default) @ spring-boot-kotlin-starter-service ---
+[INFO] Installing pre-commit hook into /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/.git/hooks
+[INFO] Installing pre-push hook into /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/.git/hooks
+[INFO] 
+[INFO] --- jacoco:0.8.8:prepare-agent (default) @ spring-boot-kotlin-starter-service ---
+[INFO] argLine set to -javaagent:/Users/toobaaziz/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/target/jacoco.exec,excludes=**/*SpringBootKotlinApplication*.*
+[INFO] 
+[INFO] --- resources:2.7:resources (default-resources) @ spring-boot-kotlin-starter-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ spring-boot-kotlin-starter-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- kotlin:1.9.22:compile (compile) @ spring-boot-kotlin-starter-service ---
+[INFO] Applied plugin: 'spring'
+[INFO] Applied plugin: 'jpa'
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/advice/ErrorResponseAdvisor.kt: (30, 33) Unchecked cast: (Mutable)List<String?>! to MutableList<String>
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (28, 21) 'cors(): CorsConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (29, 22) 'and(): H!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (30, 26) 'csrf(): CsrfConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (31, 26) 'authorizeHttpRequests(): AuthorizeHttpRequestsConfigurer<HttpSecurity!>.AuthorizationManagerRequestMatcherRegistry!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (32, 22) 'and(): H!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (33, 26) 'sessionManagement(): SessionManagementConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (35, 22) 'and(): H!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (36, 26) 'exceptionHandling(): ExceptionHandlingConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (37, 22) 'and(): H!' is deprecated. Deprecated in Java
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/service/VideoService.kt: (42, 41) Parameter 'videoUrl' is never used
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.594 s
+[INFO] Finished at: 2026-02-21T14:53:54+01:00
+[INFO] ------------------------------------------------------------------------
