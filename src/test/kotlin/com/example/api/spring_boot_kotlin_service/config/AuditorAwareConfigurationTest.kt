@@ -12,7 +12,6 @@ import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 import org.mockito.kotlin.times
-import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.core.context.SecurityContextHolder
 import java.util.*
 
@@ -27,7 +26,6 @@ internal class AuditorAwareConfigurationTest {
     private val mockHttpRequest: HttpServletRequest = mock(HttpServletRequest::class.java)
     private val mockHttpResponse: HttpServletResponse = mock(HttpServletResponse::class.java)
     private val mockFilterChain: FilterChain = mock(FilterChain::class.java)
-    private val httpSecurity: HttpSecurity = mock(HttpSecurity::class.java)
 
 
     @BeforeEach

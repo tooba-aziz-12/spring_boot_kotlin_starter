@@ -1,5 +1,6 @@
 package com.example.api.spring_boot_kotlin_service.security.filter
 
+import com.example.api.spring_boot_kotlin_service.constant.RequestHeaders
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletException
 import jakarta.servlet.http.HttpServletRequest
@@ -22,17 +23,33 @@ import java.util.stream.Stream
 
 @Component
 class PreAuthorizationFilter : OncePerRequestFilter() {
-    @Throws(ServletException::class, IOException::class)
     public override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
 
+        val isValidatedHeader =
+            request.getHeader(RequestHeaders.IS_VALIDATED)
 
-        val permissions = request.getHeader(com.example.api.spring_boot_kotlin_service.constant.RequestHeaders.USER_ROLES).split(",".toRegex())
-            .toTypedArray()
-        injectSecurityPrincipal(request.getHeader(com.example.api.spring_boot_kotlin_service.constant.RequestHeaders.USER_ID), permissions)
+        val isValidated = parseBoolean(isValidatedHeader)
+
+        if (isValidated) {
+
+            val userName = request.getHeader(RequestHeaders.USER_ID)
+
+            val rolesHeader = request.getHeader(RequestHeaders.USER_PERMISSIONS)
+
+            val permissions = rolesHeader
+                ?.takeIf { it.isNotBlank() }
+                ?.split(",")
+                ?.toTypedArray()
+                ?: emptyArray()
+
+            if (!userName.isNullOrBlank()) {
+                injectSecurityPrincipal(userName, permissions)
+            }
+        }
 
         filterChain.doFilter(request, response)
     }

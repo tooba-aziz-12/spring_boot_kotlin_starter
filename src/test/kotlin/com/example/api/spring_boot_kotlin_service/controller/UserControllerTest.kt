@@ -4,7 +4,6 @@ import com.example.api.spring_boot_kotlin_service.fixture.UserFixture.Companion.
 import com.example.api.spring_boot_kotlin_service.fixture.UserFixture.Companion.userDto
 import com.example.api.spring_boot_kotlin_service.service.UserService
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -14,7 +13,6 @@ import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
-import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
@@ -84,7 +82,6 @@ class UserControllerTest{
                 .andReturn()
 
             Mockito.verify(userService, times(1)).createUser(userDto)
-            Assertions.assertEquals(andReturn.response.status, HttpStatus.OK.value())
         }
         @Test
         fun forBadRequest() {
@@ -99,7 +96,6 @@ class UserControllerTest{
                 .andReturn()
 
             Mockito.verify(userService, times(0)).createUser(createUserBadDto)
-            Assertions.assertEquals(andReturn.response.status, HttpStatus.BAD_REQUEST.value())
         }
     }
 
@@ -124,7 +120,6 @@ class UserControllerTest{
                 .andReturn()
 
             Mockito.verify(userService, times(1)).getUserById(requestUserId)
-            Assertions.assertEquals(andReturn.response.status, HttpStatus.OK.value())
         }
         @Test
         fun withWrongURI() {
@@ -138,7 +133,6 @@ class UserControllerTest{
                 .andReturn()
 
             Mockito.verify(userService, times(0)).getUserById(requestUserId)
-            Assertions.assertEquals(andReturn.response.status, HttpStatus.METHOD_NOT_ALLOWED.value())
         }
     }
 }

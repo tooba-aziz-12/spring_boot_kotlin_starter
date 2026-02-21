@@ -33,7 +33,7 @@ data class UserDto(
         ).apply {
             this.userRoles = userRoles.map {
                 UserRole(
-                    userId = this.id!!,
+                    user = this,
                     role = it,
                     userRoleName = it.codeName
                 )

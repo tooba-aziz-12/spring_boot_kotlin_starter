@@ -6,8 +6,9 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "user_role")
 data class UserRole(
-    @Column(name = "user_id", nullable = false)
-    val userId: String,
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    var user: User,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")

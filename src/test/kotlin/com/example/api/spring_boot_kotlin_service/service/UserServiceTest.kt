@@ -18,6 +18,7 @@ import org.mockito.Captor
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.any
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 import java.util.*
@@ -25,111 +26,102 @@ import java.util.*
 @ExtendWith(MockitoExtension::class)
 class UserServiceTest {
 
-     private lateinit var userService: UserService
+    private lateinit var userService: UserService
 
-     @Mock
-     lateinit var roleRepository: RoleRepository
+    @Mock
+    lateinit var roleRepository: RoleRepository
 
     @Mock
     lateinit var userRepository: UserRepository
 
     @Captor
-    val userCaptor: ArgumentCaptor<User> =
-        ArgumentCaptor.forClass(User::class.java)
+    lateinit var userCaptor: ArgumentCaptor<User>
 
     @BeforeEach
     fun setup() {
-        this.userService = UserService(
-            roleRepository,
-            userRepository
-        )
+        userService = UserService(roleRepository, userRepository)
     }
 
     @Nested
-    inner class CreateUserTest{
+    inner class CreateUserTest {
 
         @Test
-        fun createUser(){
+        fun `should create user successfully`() {
+            whenever(roleRepository.findByCodeNameIn(userDto.userRoles.map { it.userRoleName.name }))
+                .thenReturn(roles)
 
+            whenever(userRepository.save(userCaptor.capture()))
+                .thenReturn(user)
 
-            whenever(roleRepository.findByCodeNameIn(userDto.userRoles.map { it.userRoleName.name })).thenReturn(roles)
+            val response = userService.createUser(userDto)
 
-            whenever(userRepository.save(userCaptor.capture())).thenReturn(user)
+            val savedUser = userCaptor.value
 
-            val response  = userService.createUser(userDto = userDto)
+            Assertions.assertNotNull(savedUser)
+            Assertions.assertEquals(userDto.email, savedUser.email)
+            Assertions.assertEquals(userDto.firstName, savedUser.firstName)
+            Assertions.assertEquals(userDto.lastName, savedUser.lastName)
+            Assertions.assertEquals(userDto.phone, savedUser.phone)
 
-            val actualInvocationOfSave = userCaptor.value
-
-            Assertions.assertNotNull(actualInvocationOfSave.id)
             Assertions.assertNotNull(response.userId)
+            Assertions.assertEquals(userDto.email, response.email)
+            Assertions.assertEquals(1, response.userRoles.size)
 
-            Assertions.assertEquals(userDto.email, response.email, actualInvocationOfSave.email )
-            Assertions.assertEquals(userDto.firstName,response.firstName, actualInvocationOfSave.firstName)
-            Assertions.assertEquals(userDto.lastName, response.lastName, actualInvocationOfSave.lastName)
-            Assertions.assertEquals(userDto.phone, response.phone, actualInvocationOfSave.phone)
-            Assertions.assertTrue(response.userRoles.size==1)
-            Assertions.assertNotNull(roles[0].id, actualInvocationOfSave.id)
-            Assertions.assertEquals(userDto.userRoles[0].userRoleName.name, response.userRoles[0].userRoleName.name, roles[0].codeName.name)
-
-
+            Mockito.verify(roleRepository, times(1))
+                .findByCodeNameIn(userDto.userRoles.map { it.userRoleName.name })
+            Mockito.verify(userRepository, times(1)).save(savedUser)
         }
 
         @Test
-        fun inCaseOfExceptionRaiseCustomException(){
+        fun `should throw UserCreationFailedException when repository fails`() {
+            whenever(roleRepository.findByCodeNameIn(userDto.userRoles.map { it.userRoleName.name }))
+                .thenReturn(roles)
 
-            val requestRoles = userDto.userRoles.map { it.userRoleName.name }
+            whenever(userRepository.save(any<User>()))
+                .thenThrow(RuntimeException())
 
-            try {
-                whenever(roleRepository.findByCodeNameIn(requestRoles)).thenReturn(roles)
-
-                whenever(userRepository.save(userCaptor.capture())).thenThrow(RuntimeException())
-
-                userService.createUser(userDto = userDto)
-            }catch (ex: Exception){
-                Assertions.assertEquals(UserCreationFailedException::class.java,ex.javaClass)
+            Assertions.assertThrows(UserCreationFailedException::class.java) {
+                userService.createUser(userDto)
             }
 
-            Mockito.verify(roleRepository, times(1)).findByCodeNameIn(requestRoles)
-            Mockito.verify(userRepository, times(1)).save(userCaptor.capture())
+            Mockito.verify(roleRepository, times(1))
+                .findByCodeNameIn(userDto.userRoles.map { it.userRoleName.name })
+            Mockito.verify(userRepository, times(1)).save(any())
         }
     }
 
     @Nested
-    inner class GetUserByIdTest{
+    inner class GetUserByIdTest {
 
         @Test
-        fun getUserById(){
+        fun `should return user when found`() {
+            val userId = "test-user-id"
+            whenever(userRepository.findById(userId))
+                .thenReturn(Optional.of(user))
 
-            val requestUserId = "test-user-id"
-            whenever(userRepository.findById("test-user-id")).thenReturn(Optional.of(user))
+            val response = userService.getUserById(userId)
 
-            val response  = userService.getUserById(requestUserId)
+            Assertions.assertEquals(user.email, response.email)
+            Assertions.assertEquals(user.firstName, response.firstName)
+            Assertions.assertEquals(user.lastName, response.lastName)
+            Assertions.assertEquals(user.phone, response.phone)
+            Assertions.assertEquals(1, response.userRoles.size)
 
-            Assertions.assertNotNull(response.userId)
-
-            Assertions.assertEquals(user.email, response.email, response.email )
-            Assertions.assertEquals(user.firstName,response.firstName, response.firstName)
-            Assertions.assertEquals(user.lastName, response.lastName, response.lastName)
-            Assertions.assertEquals(user.phone, response.phone, response.phone)
-            Assertions.assertTrue(response.userRoles.size==1)
-
+            Mockito.verify(userRepository, times(1)).findById(userId)
         }
 
         @Test
-        fun inCaseUserNotFound(){
-            val requestUserId = "wrong-user-id"
-            try {
+        fun `should throw UserNotFoundException when user does not exist`() {
+            val userId = "wrong-user-id"
 
-                whenever(userRepository.findById(requestUserId)).thenReturn(Optional.empty())
+            whenever(userRepository.findById(userId))
+                .thenReturn(Optional.empty())
 
-                userService.getUserById(requestUserId)
-
-            }catch (ex: Exception){
-                Assertions.assertEquals(UserNotFoundException::class.java,ex.javaClass)
+            Assertions.assertThrows(UserNotFoundException::class.java) {
+                userService.getUserById(userId)
             }
 
-            Mockito.verify(userRepository, times(1)).findById(requestUserId)
+            Mockito.verify(userRepository, times(1)).findById(userId)
         }
     }
-
 }

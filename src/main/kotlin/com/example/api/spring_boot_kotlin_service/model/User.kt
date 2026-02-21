@@ -22,8 +22,7 @@ data class User(
     @Column(name = "phone", nullable = true)
     val phone: String = "",
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL], mappedBy = "userId")
-    @JsonIgnoreProperties(value = ["role"])
+    @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
     var userRoles: MutableList<UserRole> = mutableListOf()
 
 ): BaseEntity()
