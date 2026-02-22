@@ -1,5 +1,6 @@
 mvn compile
 [INFO] Scanning for projects...
+[WARNING] The requested profile "github" could not be activated because it does not exist.
 [INFO] 
 [INFO] ---------< com.example.api:spring-boot-kotlin-starter-service >---------
 [INFO] Building spring_boot_kotlin_starter 0.0.1-SNAPSHOT
@@ -26,6 +27,9 @@ mvn compile
 [INFO] Applied plugin: 'spring'
 [INFO] Applied plugin: 'jpa'
 [WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/advice/ErrorResponseAdvisor.kt: (30, 33) Unchecked cast: (Mutable)List<String?>! to MutableList<String>
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/event/inbound/VideoProcessor.kt: (39, 56) Parameter 'videoS3Key' is never used
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/event/inbound/VideoProcessor.kt: (46, 63) Parameter 'videoS3Key' is never used
+[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/event/inbound/VideoProcessor.kt: (66, 36) Parameter 'videoS3Key' is never used
 [WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (28, 21) 'cors(): CorsConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
 [WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (29, 22) 'and(): H!' is deprecated. Deprecated in Java
 [WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (30, 26) 'csrf(): CsrfConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
@@ -35,10 +39,10 @@ mvn compile
 [WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (35, 22) 'and(): H!' is deprecated. Deprecated in Java
 [WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (36, 26) 'exceptionHandling(): ExceptionHandlingConfigurer<HttpSecurity!>!' is deprecated. Deprecated in Java
 [WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/security/config/ApplicationSecurityConfiguration.kt: (37, 22) 'and(): H!' is deprecated. Deprecated in Java
-[WARNING] /Users/toobaaziz/IdeaProjects/spring_boot_kotlin_starter/src/main/kotlin/com/example/api/spring_boot_kotlin_service/service/VideoService.kt: (42, 41) Parameter 'videoUrl' is never used
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.590 s
-[INFO] Finished at: 2026-02-21T15:23:07+01:00
+[INFO] Total time:  3.959 s
+[INFO] Finished at: 2026-02-22T15:21:26+01:00
 [INFO] ------------------------------------------------------------------------
+[WARNING] The requested profile "github" could not be activated because it does not exist.

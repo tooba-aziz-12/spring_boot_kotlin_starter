@@ -10,6 +10,7 @@ A production-style backend service built with **Kotlin + Spring Boot**, followin
 ## Tech Stack
 
 - Kotlin 1.9
+- Kotlin coroutines
 - Spring Boot 3.2
 - Spring Web
 - Spring Data JPA
@@ -30,7 +31,6 @@ A production-style backend service built with **Kotlin + Spring Boot**, followin
 
 The project follows a layered architecture:
 
-
 Controller → Service → Repository → Database
 
 
@@ -48,7 +48,7 @@ Controller → Service → Repository → Database
 - Orchestrates repositories
 - Handles exception translation
 - Converts Entities ↔ DTOs
-- 100% coverage enforced via JaCoCo profile
+- Test coverage enforced via JaCoCo profile
 
 ### Repository Layer
 
@@ -90,16 +90,10 @@ We use **Liquibase** to manage schema changes.
 ### Migration Files
 
 Stored under:
-
-
 src/main/resources/migrations/
 
-
 Test-specific changelog:
-
-
 db.changelog-test.xml
-
 
 Liquibase runs automatically at startup.
 
@@ -149,9 +143,7 @@ Liquibase runs automatically at startup.
 
 Run coverage locally:
 
-
 mvn clean verify -Pcoverage
-
 
 ---
 
@@ -169,15 +161,11 @@ mvn clean verify -Pcoverage
 
 Build Docker image:
 
-
 docker build -t spring-boot-kotlin-service .
-
 
 CI pipeline automatically builds and publishes image to:
 
-
 ghcr.io/<username>/<repo>
-
 
 ---
 
@@ -204,25 +192,18 @@ Coverage enforcement can be toggled via profile.
 
 mvn spring-boot:run
 
-
 ### Run tests
-
 
 mvn test
 
-
 ### Run with coverage enforcement
-
 
 mvn clean verify -Pcoverage
 
-
 ### Run via Docker
 
-
-docker build -t app .
-docker run -p 8080:8080 app
-
+mvn clean package -DskipTests
+docker-compose up --build
 
 ---
 
@@ -239,7 +220,7 @@ docker run -p 8080:8080 app
 
 ---
 
-## Why This Project Matters
+## What does this project represent
 
 This project demonstrates:
 
