@@ -1,22 +1,58 @@
 server:
-  port: 5000
+  port: 8080
 
 cloud:
   aws:
     stack:
       auto: false
 
-
 datasource:
   sample-db:
-    url: jdbc:mysql://localhost:3306/sample_db
-    username: root
-    password: my-dhr-pwd
+    url: jdbc:mysql://mysql:3306/spring_db
+    username: spring
+    password: spring
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 liquibase:
   datasource:
     sample-db:
-      url: jdbc:mysql://localhost:3306/sample_db
-      username: root
-      password: my-dhr-pwd
+      url: jdbc:mysql://mysql:3306/spring_db
+      username: spring
+      password: spring
       changelog: classpath:migrations/local/db.changelog-local.xml
+
+spring:
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: video-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+aws:
+  s3:
+    endpoint: http://localstack:4566
+    region: eu-central-1
+    access-key: test
+    secret-key: test
+    bucket: your-bucket-name
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      enabled: true
+      show-details: always

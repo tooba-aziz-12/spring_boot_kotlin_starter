@@ -1,46 +1,55 @@
 package com.example.api.spring_boot_kotlin_service.service
 
-import com.example.api.spring_boot_kotlin_service.dto.VideoRequest
+import com.example.api.spring_boot_kotlin_service.config.S3Properties
+import com.example.api.spring_boot_kotlin_service.dto.VideoMetadataRequest
 import com.example.api.spring_boot_kotlin_service.dto.VideoResponse
-import kotlinx.coroutines.*
+import com.example.api.spring_boot_kotlin_service.event.outbound.VideoEventPublisher
+import com.example.api.spring_boot_kotlin_service.event.outbound.dto.VideoUploadedEvent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
-import java.time.Instant
+import org.springframework.web.multipart.MultipartFile
+import software.amazon.awssdk.core.sync.RequestBody
+import software.amazon.awssdk.services.s3.S3Client
+import software.amazon.awssdk.services.s3.model.PutObjectRequest
 
 @Service
-class VideoService {
+class VideoService(
+    private val s3Client: S3Client,
+    private val s3Properties: S3Properties,
+    private val publisher: VideoEventPublisher
+) {
 
-    suspend fun processVideo(request: VideoRequest): VideoResponse =
+    suspend fun uploadAndPublish(metadata: VideoMetadataRequest, file: MultipartFile): VideoResponse =
         withContext(Dispatchers.IO) {
 
-            coroutineScope {
+            val ext = file.originalFilename?.substringAfterLast('.', missingDelimiterValue = "mp4") ?: "mp4"
+            val s3Key = "${metadata.videoId}.$ext"
 
-                val previewDeferred = async { generatePreview(request.videoUrl) }
-                val gifDeferred = async { generateGif(request.videoUrl) }
-                val metadataDeferred = async { extractDuration(request.videoUrl) }
-
-                VideoResponse(
-                    videoId = request.videoId,
-                    previewImageUrl = previewDeferred.await(),
-                    gifUrl = gifDeferred.await(),
-                    durationInSeconds = metadataDeferred.await(),
-                    processedAt = Instant.now()
+            file.inputStream.use { input ->
+                s3Client.putObject(
+                    PutObjectRequest.builder()
+                        .bucket(s3Properties.bucket)
+                        .key(s3Key)
+                        .contentType(file.contentType ?: "application/octet-stream")
+                        .build(),
+                    RequestBody.fromInputStream(input, file.size)
                 )
             }
+
+            publisher.publishVideoUploaded(
+                VideoUploadedEvent(
+                    videoId = metadata.videoId,
+                    s3Key = s3Key,
+                    uploadedBy = metadata.uploadedBy
+                )
+            )
+
+            VideoResponse(
+                videoId = metadata.videoId,
+                status = "UPLOADED",
+                s3Key = s3Key,
+                uploadedAt = metadata.uploadedAt
+            )
         }
-
-
-    private suspend fun generatePreview(videoUrl: String): String {
-        delay(500) // simulate IO work
-        return "$videoUrl/preview.jpg"
-    }
-
-    private suspend fun generateGif(videoUrl: String): String {
-        delay(700) // simulate IO work
-        return "$videoUrl/preview.gif"
-    }
-
-    private suspend fun extractDuration(videoUrl: String): Long {
-        delay(300) // simulate metadata extraction
-        return 120L
-    }
 }

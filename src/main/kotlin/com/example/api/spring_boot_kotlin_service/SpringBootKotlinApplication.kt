@@ -2,6 +2,7 @@ package com.example.api.spring_boot_kotlin_service
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.kafka.annotation.EnableKafka
 
 @SpringBootApplication
 class SpringBootKotlinApplication {
