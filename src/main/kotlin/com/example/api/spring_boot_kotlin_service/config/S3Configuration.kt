@@ -1,6 +1,7 @@
 package com.example.api.spring_boot_kotlin_service.config
 
 import org.springframework.boot.ApplicationRunner
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
@@ -45,6 +46,12 @@ class S3Configuration {
     }
 
     @Bean
+    @ConditionalOnProperty(
+        prefix = "aws.s3",
+        name = ["init-bucket"],
+        havingValue = "true",
+        matchIfMissing = true
+    )
     fun ensureBucketExists(s3: S3Client, props: S3Properties) = ApplicationRunner {
         try {
             s3.headBucket(HeadBucketRequest.builder().bucket(props.bucket).build())

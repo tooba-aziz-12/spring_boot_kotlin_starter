@@ -46,6 +46,7 @@ aws:
     access-key: test
     secret-key: test
     bucket: your-bucket-name
+    init-bucket: true
 
 management:
   endpoints:
@@ -56,3 +57,4 @@ management:
     health:
       enabled: true
       show-details: always
+

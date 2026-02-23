@@ -4,6 +4,8 @@ spring:
   autoconfigure:
     exclude:
       - org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
+      - org.springframework.cloud.aws.autoconfigure.context.ContextRegionProviderAutoConfiguration
+      - org.springframework.cloud.aws.autoconfigure.context.ContextCredentialsAutoConfiguration
 logging:
   level:
     org:
@@ -33,3 +35,7 @@ liquibase:
       username: sa
       password: sa
       changelog: classpath:migrations/db.changelog-test.xml
+
+aws:
+  s3:
+    init-bucket: false
